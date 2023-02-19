@@ -51,7 +51,7 @@ The output of the entire project is a trained model linked to a webapp that clas
 An example of the output working can be seen in the screenshots below, where a message is written in the text bar and the corresponding categories are highlighted.
 
 ![Screenshot 2023-02-20 010833](https://user-images.githubusercontent.com/71082811/219980893-87424ff8-5a7d-4012-8c86-17c246ca47e4.png)
-![Screenshot 2023-02-20 010911](https://user-images.githubusercontent.com/71082811/219980891-744ecc4d-1021-4ccb-a85b-805aa2979dec.png)
+![Screenshot 2023-02-20 010858](https://user-images.githubusercontent.com/71082811/219981152-7a038a65-11f1-4206-8f1b-2eb45ea7b9e1.png)
 ![Screenshot 2023-02-20 010858](https://user-images.githubusercontent.com/71082811/219980892-9716b2d0-a568-4107-9f6d-462b4f8677dc.png)
 
 
