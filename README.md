@@ -16,6 +16,8 @@ The libraries used are: (Pandas, Numpy, Sqlalchemy, sklearn, nltk)
 ## Project Motivation<a name="motivation"></a>
 This is my second project in the Udacity Data Science program.
 The idea behind this project is using a data set containing real messages that were sent during disaster events, and create a machine learning pipeline in order to categorize messages to send them to the correct disaster relief support.
+This project truly shows its power in supporting those in need after disasters as well as relief agencies, especially after disaster events as they get thousands of messages. This concept really has the ability to impact lives that could be in danger and need fast response, as well as provide much needed support to disaster relief agencies. Considering the events we hear everyday and the tragedies we see this really was a meaningful project to partake in.
+
 The project is divided into 3 sections.
 ### 1. ETL (Extract, Transform, load)
 This pipeline is responsible for extracting the data from the provided dataset, followed by a transformation/cleaning process of merging/removing duplicates etc.
