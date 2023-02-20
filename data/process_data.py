@@ -38,7 +38,10 @@ def clean_data(df):
         
         # convert column from string to numeric
         categories[column] = pd.to_numeric(categories[column])
-
+    
+    #Handling case where values are (2)
+    categories = categories.replace(2, 0)
+    
     #Replace categories column in df with new category columns. 
     # drop the original categories column from `df`
     df=df.drop('categories', axis=1)
@@ -51,8 +54,13 @@ def clean_data(df):
     
     return df
 def save_data(df, database_filename):
+    """
+        Saves the clean dataframe to a SQL database
+        inputs: data frame
+            
+    """
     #Save the clean dataset into an sqlite database
-    engine = create_engine('sqlite:///DisasterResponse.db')
+    engine = create_engine('sqlite:///' + database_filename)
     df.to_sql('Responses', engine, index=False, if_exists='replace')  
 
 

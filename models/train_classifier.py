@@ -21,7 +21,13 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import load_diabetes
 
 def load_data(database_filepath):
-    engine = create_engine('sqlite:///DisasterResponse.db')
+    """
+        
+        inputs: File path of the database produced from process.py
+            
+        output: message values, category values, category names in variables X,Y,category_names 
+    """
+    engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table('Responses', con=engine.connect())
     X = df.message.values
     Y = df[df.columns[4:]]
@@ -29,6 +35,11 @@ def load_data(database_filepath):
     return X, Y, category_names
 
 def tokenize(text):
+    """
+        inputs: Distaster messages from the messages column  
+            
+        output: list of clean tokenized words  
+    """
     #normalize text
     re.sub(r"[^a-zA-Z0-9]", " ", text)
     
@@ -51,7 +62,9 @@ def tokenize(text):
 
 
 def build_model():
-
+    """
+        Builds the machine learning pipeline and outputs the model using gridsearch to find the most optimal parameters
+    """
     pipeline = Pipeline([
             ('vect', CountVectorizer(tokenizer=tokenize)),
             ('tfidf', TfidfTransformer()),
@@ -59,7 +72,7 @@ def build_model():
         ])
    
     parameters = {
-        'clf__estimator__n_estimators': [10],
+        'clf__estimator__n_estimators': [1],
         'clf__estimator__min_samples_split': [2,3]
     }
 
@@ -77,14 +90,21 @@ def evaluate_model(model, X_test, Y_test, category_names):
     """
     Y_pred = model.predict(X_test)
 
-    for i, var in enumerate(category_names):
-        print('Category:', category_names[i])
+     
+    for i, var in enumerate(Y_test.columns):
+        print('Category:', Y_test.columns[i])
         print(classification_report(Y_test.iloc[:, i].values, Y_pred[:, i]))
         
 
 def save_model(model, model_filepath):
+    """
+        Saves the model in a pickle file
+
+        inputs: Model produced from build_model function  
+         
+    """
     #Export model as a pickle file
-    pickle.dump(model, open('model.pkl', 'wb'))
+    pickle.dump(model, open(model_filepath, 'wb'))
 
 
 def main():
